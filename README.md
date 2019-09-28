@@ -21,7 +21,7 @@ This is an area to define classes and what they do:
 - win/loss record
 
 ### Board
-- cells[8][8]
+- cell[8][8]
 
 ### Cell
 - position
