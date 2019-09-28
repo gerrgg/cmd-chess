@@ -3,19 +3,20 @@
 class Piece {
     public:
         bool alive = true;
-        std::string symbol = " ";
+        std::string symbol;
 };
 
 class Cell
 {
     public:
-        Piece value;
+        Piece piece;
+        std::string symbol = " ";
 
     void set(Piece v)
-        { value = v; }
+        { piece = v; symbol = v.symbol; }
 
     std::string get()
-        { return value.symbol; }
+        { return symbol; }
     
 };
 
