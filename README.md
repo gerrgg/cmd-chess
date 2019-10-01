@@ -1,6 +1,9 @@
 # cmd-chess
 Command line chess in all its c++ glory.
 
+A board is composed of 64 Cells, each cell will be passed it's x & y coordinate.
+We pass the coordinates to the Piece setup the board. Constructing a piece will generate it's color, and value (King, Pawn, Empty, Etc)
+
 ## Requirements
 - Display text-based display including Board, Pieces and UI
 - Implement standard chess rules

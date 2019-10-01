@@ -2,6 +2,6 @@
 
 int main()
 {
-    Board b;
-    b.display();
+ Board b;
+ b.display();
 };

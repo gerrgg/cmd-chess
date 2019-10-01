@@ -1,28 +1,66 @@
-#include <sstream>
+#include <vector>
+#include <iostream>
 
-class Piece {
+using namespace std;
+
+class Piece{
     public:
-        bool alive = true;
-        std::string symbol;
+        string color;
+        string symbol;
+
+        void set_symbol(char c){
+            if( this->color == "black"){
+                c = putchar(toupper(c));
+            }
+            this->symbol = c;
+        }
+
 };
 
-class Cell
-{
+class Bishop: public Piece{
     public:
-        Piece piece;
-        std::string symbol = " ";
+        Bishop(string c){
+            this->color = c;
+            set_symbol('b');
+        }
+};
 
-    void set(Piece v)
-        { piece = v; symbol = v.symbol; }
+class Rook: public Piece{
+    public:
+        Rook(string c){
+            this->color = c;
+            set_symbol('r');
+        }
+};
 
-    std::string get()
-        { return symbol; }
-    
+class Knight: public Piece{
+    public:
+        Knight(string c){
+            this->color = c;
+            set_symbol('n');
+        }
+};
+
+class Queen: public Piece{
+    public:
+        Queen(string c){
+            this->color = c;
+            set_symbol('q');
+        }
+};
+
+class King: public Piece{
+    public:
+        King(string c){
+            this->color = c;
+            set_symbol('k');
+        }
 };
 
 class Pawn: public Piece{
     public:
-        Pawn(){
-            symbol = "P";
+        Pawn(string c){
+            this->color = c;
+            set_symbol('p');
         }
 };
