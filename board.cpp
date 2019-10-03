@@ -4,38 +4,45 @@
 
 using namespace std;
 
+
 class Board{
     public:
-    Piece board[8][8];
+    Piece board[8][8] = {
+        { Rook(), Bishop(), Knight(), Queen(), King(), Knight(), Queen(), Rook()  },
+        { Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()  },
+        { N(), N(), N(), N(), N(), N(), N(), N() },
+        { N(), N(), N(), N(), N(), N(), N(), N() },
+        { N(), N(), N(), N(), N(), N(), N(), N() },
+        { N(), N(), N(), N(), N(), N(), N(), N() },
+        { Rook(), Bishop(), Knight(), Queen(), King(), Knight(), Queen(), Rook()  },
+        { Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()  }
+    };
 
     Board(){
-        setup();
+        set_colors();
     }
 
-    void setup(){
-        /*
-        Setup the board
-        */
-        int x,y;
-        for(x=0; x<8; x++){
-            string color = get_color(x);
+    void set_colors(){
+        
+    }
 
-            for(y=0; y<8; y++){
-                if( x == 0 || x == 7 ){
-                    board[x][y] = get_royalty(color, x ,y);
-                }
-            }
-        }
+    void move_piece(int f[2], int t[2]){
+        Piece &from = board[f[0]][f[1]];
+        Piece temp = board[t[0]][t[1]];
+
+        // we want the from to equal the to
+        board[t[0]][t[1]] = from;
+        board[f[0]][f[1]] = temp;
     }
 
     void display(){
         stringstream ss;
         int x, y;
         
-
         for(x=0; x<8; x++){
             for(y=0; y<8; y++){
-                ss << "|" << board[x][y].symbol << "|";
+                char &piece = board[x][y].symbol;
+                ss << "|" << piece << "|";
             }
             ss << '\n';
         }
@@ -43,30 +50,6 @@ class Board{
         cout << ss.str() << '\n';
     }
 
-    Piece get_royalty(string color, int x, int y){
-        if( y == 0 || y == 7 ){
-            return Rook(color);
-        } else if( y == 1 || y == 2 ){
-            return Bishop(color);
-        } else if( y == 3 || y == 5 ){
-            return Knight(color);
-        } else {
-            //king or queen
-            if( x == 0 ){
-                if( y == 4 ){
-                    return Queen(color);
-                } else {
-                    return King(color);
-                }
-            } else {
-                if( y == 4 ){
-                    return King(color);
-                } else {
-                    return Queen(color);
-                }
-            }
-        }
-    }
 
     string get_color(int x){
         string color;

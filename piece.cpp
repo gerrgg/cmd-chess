@@ -5,62 +5,58 @@ using namespace std;
 
 class Piece{
     public:
-        string color;
-        string symbol;
+        char symbol;
+        bool is_black;
 
-        void set_symbol(char c){
-            if( this->color == "black"){
-                c = putchar(toupper(c));
-            }
-            this->symbol = c;
-        }
-
+        Piece(){ is_black = false; }
+    
 };
 
 class Bishop: public Piece{
     public:
-        Bishop(string c){
-            this->color = c;
-            set_symbol('b');
+        Bishop(){
+            symbol = 'b';
         }
 };
 
 class Rook: public Piece{
     public:
-        Rook(string c){
-            this->color = c;
-            set_symbol('r');
+        Rook(){
+            symbol = 'r';
         }
 };
 
 class Knight: public Piece{
     public:
-        Knight(string c){
-            this->color = c;
-            set_symbol('n');
+        Knight(){
+            symbol = 'n';
         }
 };
 
 class Queen: public Piece{
     public:
-        Queen(string c){
-            this->color = c;
-            set_symbol('q');
+        Queen(){
+            symbol = 'q';
         }
 };
 
 class King: public Piece{
     public:
-        King(string c){
-            this->color = c;
-            set_symbol('k');
+        King(){
+            symbol = 'k';
         }
 };
 
 class Pawn: public Piece{
     public:
-        Pawn(string c){
-            this->color = c;
-            set_symbol('p');
+        Pawn(){
+            symbol = 'p';
+        }
+};
+
+class N: public Piece{
+    public:
+        N(){
+            symbol = ' ';
         }
 };
